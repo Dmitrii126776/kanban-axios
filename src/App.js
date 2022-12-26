@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import {useEffect} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const getCards = () => {
+        axios.get('http://localhost:5000/statuses')
+            .then(function (response) {
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+    }
+
+    useEffect(() => {
+        getCards()
+    }, [])
+
+    return (
+        <div className="App">
+            <h1>Kanban Axios</h1>
+        </div>
+    );
 }
 
 export default App;
