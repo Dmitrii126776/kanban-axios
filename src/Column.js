@@ -3,7 +3,7 @@ import Task from "./Task";
 
 const Column = (props) => {
 
-
+    const {changePriority, priorities} = props
     return (
         <div className="col">
             <h2>
@@ -14,6 +14,11 @@ const Column = (props) => {
                     key={el._id}
                     task={el}
                     deleteTask={props.deleteTask}
+                    changePriority={changePriority}
+                    priorities={priorities}
+                    changeStatus={props.changeStatus}
+                    arrayStatuses={props.arrayStatuses}
+                    updateTask={props.updateTask}
                 />)}
         </div>
     );
