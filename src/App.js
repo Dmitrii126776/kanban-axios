@@ -15,7 +15,7 @@ function App() {
     const [tasks, setTasks] = useState([])
 
     const getStatuses = () => {
-        axios.get('https://expressjs-server.up.railway.app/statuses')
+        axios.get('https://expressjs-server.vercel.app/statuses')
             .then(function (response) {
                 // handle success
                 setStatuses(response.data);
@@ -27,17 +27,17 @@ function App() {
     }
 
     const getTasks = () => {
-        axios.get('https://expressjs-server.up.railway.app/tasks')
+        axios.get('https://expressjs-server.vercel.app/tasks')
             .then((res) => {
-                console.log(res.data)
                 setTasks(res.data);
+                console.log(res.data)
             }).catch((err) => {
             console.log(err)
         })
     }
 
     const addTask = (newTask) => {
-        axios.post('https://expressjs-server.up.railway.app/tasks', newTask)
+        axios.post('https://expressjs-server.vercel.app/tasks', newTask)
             .then((res) => {
                 getTasks()
             }).catch((err) => {
@@ -46,7 +46,7 @@ function App() {
     }
 
     const updateTask = (id, updatedTask) => {
-        axios.patch(`https://expressjs-server.up.railway.app/tasks/${id}`, updatedTask)
+        axios.patch(`https://expressjs-server.vercel.app/tasks/${id}`, updatedTask)
             .then(res => {
                 getTasks()
             }).catch(err => {
@@ -55,7 +55,7 @@ function App() {
     }
 
     const changePriority = (id, priority) => {
-        axios.patch(`https://expressjs-server.up.railway.app/tasks/${id}`, {
+        axios.patch(`https://expressjs-server.vercel.app/tasks/${id}`, {
             priority
         }).then((res) => {
             getTasks()
@@ -68,7 +68,7 @@ function App() {
         console.log(arrayStatuses)
         const currentIndex = arrayStatuses.indexOf(status)
         const newStatus = arrayStatuses[currentIndex + value]
-        axios.patch(`https://expressjs-server.up.railway.app/tasks/${id}`, {
+        axios.patch(`https://expressjs-server.vercel.app/tasks/${id}`, {
             status: newStatus
         }).then((res) => {
             getTasks()
@@ -79,7 +79,7 @@ function App() {
     }
 
     const deleteTask = (id) => {
-        axios.delete(`https://expressjs-server.up.railway.app/tasks/${id}`)
+        axios.delete(`https://expressjs-server.vercel.app/tasks/${id}`)
             .then((res) => {
                 getTasks()
             }).catch((err) => {
